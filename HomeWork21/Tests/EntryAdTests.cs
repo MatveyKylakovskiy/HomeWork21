@@ -1,7 +1,10 @@
 ﻿using HomeWork21.Pages.InternetHerokuapp;
+using PageObjectLib.Factories;
 
 namespace HomeWork21.Tests
 {
+    [Parallelizable(ParallelScope.All)]
+    [TestFixture]
     internal class EntryAdTests : BaseTest
     {
         [TestCase(true)]
@@ -12,7 +15,8 @@ namespace HomeWork21.Tests
         [TestCase(true)]
         public void AdTest(bool expected)
         {
-            BasePage.EntryAdClick();
+            // BasePage.EntryAdClick();
+            Driver.GetDriver().Navigate().GoToUrl("https://the-internet.herokuapp.com/entry_ad");
             EntryAdPage.CloseModalWindow();
             EntryAdPage.RestartAd();
 

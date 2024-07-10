@@ -7,10 +7,10 @@ namespace HomeWork21.Pages.InternetHerokuapp
 {
     internal class EntryAdPage
     {
-        private static WebElements modalContainer = new(By.XPath("//div[@id='modal']"));
-        private static WebElements closeButton = new(By.XPath("//*[text()='Close']"));
-        private static WebElements clickHereButton = new(By.Id("restart-ad"));
-        private static WebElements checkElement = new(By.XPath("//*[text()='Elemental Selenium']"));
+        private static WebElements modalContainer() => new(By.XPath("//div[@id='modal']"));
+        private static WebElements closeButton() => new(By.XPath("//*[text()='Close']"));
+        private static WebElements clickHereButton() => new(By.Id("restart-ad"));
+        private static WebElements checkElement() => new(By.XPath("//*[text()='Elemental Selenium']"));
 
         public static bool IsAdVisible() => Driver.GetWaitByTime(TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@id='modal']"))).Displayed;
 
@@ -21,7 +21,7 @@ namespace HomeWork21.Pages.InternetHerokuapp
             modal.FindElement(By.XPath("//*[text()='Close']")).Click();
         }
 
-        public static void RestartAd() => clickHereButton.Click();
+        public static void RestartAd() => clickHereButton().Click();
 
         public static bool CheckElement()
         {

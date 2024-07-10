@@ -5,9 +5,9 @@ namespace HomeWork21.Pages.InternetHerokuapp
 {
     internal class FramesPage
     {
-        private static WebElements frameText = new(By.XPath("/html/body"));
+        private static WebElements frameText() => new(By.XPath("/html/body"));
 
-        public static Dictionary<string, WebElements> DicOfFrames = new Dictionary<string, WebElements>()
+        public static Dictionary<string, WebElements> DicOfFrames() => new Dictionary<string, WebElements>()
         {
             {"Top", new(By.XPath("//*[@src='/frame_top']"))},
             {"Left", new(By.XPath("//*[@src='/frame_left']"))},
@@ -17,6 +17,6 @@ namespace HomeWork21.Pages.InternetHerokuapp
         };
         public static void SwitchToFrame(WebElements frame) => frame.SwitchToFrame();
 
-        public static string GetFrameText() => frameText.GetText();
+        public static string GetFrameText() => frameText().GetText();
     }
 }

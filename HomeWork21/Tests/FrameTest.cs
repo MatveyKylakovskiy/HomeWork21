@@ -2,6 +2,7 @@
 
 namespace HomeWork21.Tests
 {
+    [Parallelizable(ParallelScope.All)]
     internal class FrameTest : BaseTest
     {
         [TestCase("Left", "LEFT")]
@@ -10,8 +11,8 @@ namespace HomeWork21.Tests
         public void FramesTopTests(string frame, string expected)
         {
             BasePage.FramesClick();
-            FramesPage.SwitchToFrame(FramesPage.DicOfFrames["Top"]);
-            FramesPage.SwitchToFrame(FramesPage.DicOfFrames[frame]);
+            FramesPage.SwitchToFrame(FramesPage.DicOfFrames()["Top"]);
+            FramesPage.SwitchToFrame(FramesPage.DicOfFrames()[frame]);
 
             Assert.That(FramesPage.GetFrameText(), Is.EqualTo(expected));
         }
@@ -20,9 +21,11 @@ namespace HomeWork21.Tests
         public void FrameBottomTest(string frame, string expected)
         {
             BasePage.FramesClick();
-            FramesPage.SwitchToFrame(FramesPage.DicOfFrames[frame]);
+            FramesPage.SwitchToFrame(FramesPage.DicOfFrames()[frame]);
 
             Assert.That(FramesPage.GetFrameText(), Is.EqualTo(expected));
         }
     }
 }
+
+
